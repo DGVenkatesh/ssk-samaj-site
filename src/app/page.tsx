@@ -1,101 +1,87 @@
-import Image from "next/image";
+import { Popover, PopoverButton, PopoverPanel, Transition, PopoverBackdrop } from "@headlessui/react";
+import { Fragment } from "react";
+import LogoComponent from "@/components/LogoComponent";
+import CarouselSSK from "@/components/Caraousel";
+import Section1 from "@/components/Section1";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
+import Section2 from "@/components/Section2";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const OPTIONS = {
+    loop: true,
+  }
+  const SLIDE_COUNT = 2
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+
+  console.log('test-- slides', SLIDES);
+
+  return (
+    <>
+      <Popover className="container mx-auto flex items-center border-b-2 px-6 py-2 h-24 z-40">
+        <LogoComponent />
+        <div className="grow">
+          <div
+            className=" hidden sm:flex items-center justify-center gap-2 md:gap-8">
+            <Link href="none">AboutUs</Link>
+            <Link href="shop">Events</Link>
+            <Link href="about">Membership</Link> <Link href="Gentest">Contact</Link> </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="flex grow items-center justify-end sm:hidden">
+          <PopoverButton className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus: ring-indigo-500"> <span className="sr-only">Open menu</span>
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" /> </PopoverButton>
+        </div>
+        <PopoverBackdrop className="sm:hidden fixed inset-0 bg-black opacity-30 " />
+        <Transition as={Fragment} enter="duration-200 ease-out" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100" leave="duration-100 ease-in" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95">
+          <PopoverPanel focus className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden z-40">
+            <div className="rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 divide-y-2 divide-gray-50"> <div className="px-5 pt-5 pb-6">
+              <div className="flex items-center justify-between">
+                <h1 className="font-bold">SSK samaj Kanchipuram</h1>
+                <div className="-mr-2">
+                  <PopoverButton className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <span className="sr-only">Close menu</span>
+                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                  </PopoverButton>
+                </div>
+              </div>
+              <div className="mt-6">
+                <nav className="grid gap-y-8">
+                  <Link className="Focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 px-2" href="/">
+                    About Us </Link>
+                  <Link className="Focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 px-2" href="blog">
+                    Events </Link>
+                  <Link className="Focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 px-2" href="shop">
+                    Membership </Link>
+                </nav>
+              </div>
+              <div className="mt-6 flex flex-col items-center gap-2">
+                <Link href="register" className="rounded-md bg-white px-4 py-2 text-sm font-medium text-black md:text-xl w-full border-2 focus:outline-none focus: ring-2 focus: ring-inset focus: ring-gray-500"> Sign up </Link>
+                <Link href="login" className="rounded-md bg-gray-500 px-4 py-2 text-sm font-medium md: text-x1 w-full focus:outline-none focus: ring-2 focus: ring-inset focus: ring-gray-500"> Login
+                </Link>
+              </div>
+            </div>
+            </div>
+          </PopoverPanel>
+        </Transition>
+        <div className="hidden sm:block">
+          <Link href="signup" className="mx-2 font-bold">
+            Sign up
+          </Link>
+          <Link href="login" className="font-bold">
+            Login
+          </Link>
+        </div>
+      </Popover>
+      <div className="container mx-auto flex items-center border-b-2 px-6 py-2">
+        <CarouselSSK slides={SLIDES} options={OPTIONS} />
+      </div>
+      <div>
+        <Section1 />
+      </div>
+      <div>
+        <Section2 />
+      </div>
+    </>
   );
-}
+};
