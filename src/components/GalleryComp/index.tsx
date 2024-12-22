@@ -1,13 +1,13 @@
 import Image from 'next/image'
 
 const GalleryComp = ({ images, pageName }: { images: any[] }) => {
-  console.log('test-- inside comp', images.images);
+  console.log('test-- inside comp', images.images?.[0]);
   return (
     <>
       <main className="mx-auto p-4">
       <h1 className="text-cyan-500 italic my-10 font-bold text-5xl border-red-50"> {pageName} </h1>
         <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
-          {images?.images?.map(({ id, path }) => (
+          {images?.images?.map(({ id, path, description }) => (
             <div className='my-10'>
               <Image
                 id={id}
@@ -23,6 +23,7 @@ const GalleryComp = ({ images, pageName }: { images: any[] }) => {
                   (max-width: 1536px) 33vw,
                   25vw"
               />
+              <h2> {description} </h2>
               </div>
           ))}
         </div>

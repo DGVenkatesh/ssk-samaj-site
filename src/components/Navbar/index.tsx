@@ -14,7 +14,11 @@ export default function Navbar() {
             className=" hidden sm:flex items-center justify-center gap-2 md:gap-8">
             <Link href="/">Home</Link>
             <Link href="Events">Events</Link>
-            <Link href="Gallery">Gallery</Link> <Link href="aboutus">Contact Us</Link> </div>
+            <Link href="membership">Membership</Link>
+            <Link href="Gallery">Gallery</Link> <Link href="aboutus">Contact Us</Link>
+            
+             </div>
+            
         </div>
         <div className="flex grow items-center justify-end sm:hidden">
           <PopoverButton className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus: ring-indigo-500"> <span className="sr-only">Open menu</span>
@@ -39,6 +43,8 @@ export default function Navbar() {
                     Home </Link>
                   <Link className="Focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 px-2" href="Events">
                     Events </Link>
+                    <Link className="Focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 px-2" href="membership">
+                    Membership </Link>
                   <Link className="Focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 px-2" href="Gallery">
                     Gallery </Link>
                     <Link className="Focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 px-2" href="aboutus">
